@@ -4,10 +4,10 @@ trigger:
 pool: selfhosted
 
 stages:
-- stage: init&plan
+- stage: initplan
   displayName: terraform init & plan
   jobs:
-  - job: init&plan
+  - job: initplan
     displayName: terraform init & plan
     steps:
     - task: TerraformInstaller@1
@@ -17,6 +17,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
         backendServiceArm: 'Manchal-gen'
         backendAzureRmResourceGroupName: 'window-storage'
         backendAzureRmStorageAccountName: 'chayanstorage'
