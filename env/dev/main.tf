@@ -1,4 +1,4 @@
 module "rgs" {
-  source = "../../Module/1 RG"
+  source = "../../Module/RG"
   rgg    = var.rgvar
 }
