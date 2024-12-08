@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool: selfhosted
+
+stages:
+- stage: init&plan
+  displayName: terraform init & plan
+  jobs:
+  - job: init&plan
+    displayName: terraform init & plan
+    steps:
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: 'latest'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'Manchal-gen'
+        backendAzureRmResourceGroupName: 'window-storage'
+        backendAzureRmStorageAccountName: 'chayanstorage'
+        backendAzureRmContainerName: 'chayan'
+        backendAzureRmKey: 'abc.terraform.tfstate'
+    
+    
+    
+
+      
